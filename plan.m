@@ -69,6 +69,22 @@ for i  = 1 : size(points, 2)
 	hold on;
 end
 
+design_matrix = [];
+
+size(all_X)
+size(all_Y)
+
+for i = 1 : length(all_X)
+	for j = 1 : length(all_Y)
+		if 0 < all_X(i) < 4 && 0 < all_Y(i) < 4
+			collected_sample = normrnd(all_X(i)^2 + all_Y(i)^2 , 0.5);
+			design_matrix = [design_matrix ; all_X(i) all_Y(j) collected_sample];
+		end
+	end
+end
+
+
+
 scatter (all_X, all_Y);
 
 axis equal;
